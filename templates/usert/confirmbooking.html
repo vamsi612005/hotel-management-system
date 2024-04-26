@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking confirm</title>
+</head>
+<body>
+<h1>Confirm and pay</h1>
+<p>Hotel name: {{ hotelname }}</p>
+<p>Name: {{ data.Name }}</p>
+<p>No. of adults: {{ data.adults }}</p>
+<p>No. of children: {{ data.children }}</p>
+<p>Check_In: {{ data.checkin }}</p>
+<p>Check_Out: {{ data.checkout }}</p>
+<p>Phone number: {{ data.Phone_Number }}</p>
+{% if value == 1 %}
+<p>Room: Standard Room</p>
+{% elif value == 2 %}
+<p>Room: Deluxe Room</p>
+{% elif value == 3 %}
+<p>Room: Suite Room</p>
+{% endif %}
+<form method="POST" action="https://www.example.com/payment/success/" enctype="multipart/form-data">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"
+                                 data-key="rzp_test_akJqYFF93KjSKX"
+                                 data-amount="150000"
+                                 data-currency="INR"
+                                 data-order_id="{{payment.id}}"
+                                 data-buttontext="Pay with Razorpay"
+                                 data-name="Koya Hotels"
+                                 data-description="An easier way to book hotels."
+                                 data-image="https://example.com/your_logo.jpg"
+                                 data-prefill.name="Gaurav Kumar"
+                                 data-prefill.email="gaurav.kumar@example.com"
+                                 data-theme.color="#F37254"></script>
+</form>
+</body>
+</html>

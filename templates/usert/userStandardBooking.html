@@ -1,0 +1,107 @@
+{% include 'navbar/usernavbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href={% static 'css/usercss/standardbooking.css' %}/>
+    <title>Hotel booking</title>
+</head>
+<body>
+{% block body %}
+<section id="Booking_part">
+     <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+               <div class="BOOKING_DETAILS">
+                   <div class="BOOKING_title">
+                     <h2>BOOKING DETAILS</h2>
+                     <p>Selected Room</p>
+                   </div>
+                   <div class="BOOKING_pic">
+                     <img src={% static "images/small2.jpg" %} class="card-img-top" alt="hotel-image">
+                     <h4>Standard Room</h4>
+                   </div>
+               </div>
+               <div class="BOOKING_help">
+                  <div class="BOOKING_help_title">
+                     <h3>NEED HELP FOR BOOKING !</h3>
+                     <p>Help</p>
+                  </div>
+                  <div class="BOOKING_help_icon">
+                     <p><i class="fas fa-mobile-alt"></i></p>
+                     <span>01862993458</span>
+                     <h6>mdminhajurr555@gamil.com</h6>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-8">
+               <div class="BOOKING_from">
+                  <div class="BOOKING_from_title">
+                     <h3>PERSONAL INFORMATION</h3>
+                     <span>Booking form</span>
+                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat</p>
+                  </div>
+                  <div class="BOOKING_from_info">
+                     <form method="POST" action={% url 'bookingdatasave' pk=pk value=value%} enctype="multipart/form-data">
+                      {% csrf_token %}
+                        <div class="from_info1">
+                           <div class="form-group1">
+                              <input type="date" name="Check_in" class="form-control"  placeholder="Check in"  required/>
+                           </div>
+                           <div class="form-group1">
+                              <input type="date"  name="Check_out" class="form-control" placeholder="Check out"  required/>
+                           </div>
+                           <div class="form-group1">
+
+                              <input type="number" name="adults" class="form-control" placeholder="No. of adults" required />
+                           </div>
+                           <div class="form-group1">
+                              <input type="number" name="children" class="form-control" placeholder="No. of children" required />
+                           </div>
+                           <div class="form-group1">
+                              <input type="text" name="Name" class="form-control" placeholder="Name" required />
+                           </div>
+                           <div class="form-group1">
+                              <input type="text" name="Surname" class="form-control" placeholder="Surname" required />
+                           </div>
+                           <div class="form-group1">
+                              <input type="text" name="Email" class="form-control" placeholder="Email" required />
+                           </div>
+                           <div class="form-group1">
+                              <input type="text" name="Phone_Number" class="form-control" placeholder="Phone Number" required />
+                           </div>
+                           <div class="form-group1">
+                              <input type="text" name="City" class="form-control" placeholder="City" required />
+                           </div>
+                           <div class="form-group1">
+                              <input type="text" name="Country" class="form-control" placeholder="Country" required />
+                           </div>
+                            <br/>
+                           <div class="form-group1">
+                            <textarea name="Address"  placeholder="Address"></textarea>
+                           </div>
+
+                        </div>
+                        <div class="checkbox3">
+                          <input type="checkbox" name="check" required/><label for="">I Agree The Terms & Condition</label>
+                        </div>
+                        <div  class="onlineBooking_btn" >
+                           <button type="submit" >BOOKING Now</button>
+                        </div>
+                        <div  class="onlineBooking_btn" >
+                           <button type="reset">Reset</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+          </div>
+          </div>
+     </div>
+  </section>
+
+
+
+{% endblock %}
+</body>
+</html>

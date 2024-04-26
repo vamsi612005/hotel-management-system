@@ -1,0 +1,64 @@
+{% include 'navbar/usernavbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+        margin: 0;
+    padding: 0;
+    height: 100vh; /* 100% of the viewport height */
+    width: 100vw;
+            background: linear-gradient(to bottom, #fbc2eb, #a6c1ee);
+        }
+    </style>
+</head>
+<body>
+{% block body %}
+<img src="{{ hotel.hotelimage.url }}" alt="hotel-image" height="400px" width="auto">
+<h3>Hotel Description:</h3>
+<p> {{hotel.hoteldesc}} </p>
+<section id="rooms" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Our Rooms</h2>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                    <img src="/static/images/small2.jpg" class="card-img-top" alt="..." height="400" width="800">
+                    <div class="card-body">
+                        <h5 class="card-title">Standard Room</h5>
+                        <p class="card-text">Our small room is perfect for solo travelers or couples looking for a cozy and comfortable stay. Despite its compact size, this room is thoughtfully designed to maximize space and functionality.</p>
+                        <p>{{ hotel.id }}</p>
+                        <a href={% url 'standardbooking' pk=hotel.id value=1 %} class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                    <img src="/static/images/medium2.jpg" class="card-img-top" alt="..." height="400" width="800">
+                    <div class="card-body">
+                        <h5 class="card-title">Deluxe Room</h5>
+                        <p class="card-text">Indulge in luxury and comfort with our deluxe room, designed to provide you with a memorable stay experience. Ideal for both business and leisure travelers, this spacious room offers an array of amenities and elegant furnishings.</p>
+                        <input type="hidden" name="pk" value="pk">
+                        <a href={% url 'standardbooking' pk=hotel.id value=2 %} class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                    <img src="/static/images/rich2.jpg" class="card-img-top" alt="..." height="400" width="800">
+                    <div class="card-body">
+                        <h5 class="card-title">Suite Room</h5>
+                        <p class="card-text">Experience the epitome of luxury and comfort in our exquisite suite room. Designed for discerning travelers seeking an elevated stay experience, our suite offers spacious and elegant accommodations with a range of exclusive amenities.</p>
+                        <a href={% url 'standardbooking' pk=hotel.id value=3 %} class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+</body>
+</html>

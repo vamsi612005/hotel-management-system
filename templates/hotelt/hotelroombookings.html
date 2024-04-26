@@ -1,0 +1,43 @@
+{% include 'navbar/hotelnavbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel room booking</title>
+</head>
+<body>
+<h3><b>HOTEL ROOM BOOKINGS</b></h3>
+<br>
+<br>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>Adults</th>
+        <th>Children</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Phone number</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Address</th>
+    </tr>
+    {% for booking in bookings %}
+    <tr>
+        <td> {{ booking.checkin }}</td>
+        <td> {{ booking.checkout }}</td>
+        <td> {{ booking.adults }}</td>
+        <td> {{ booking.children }}</td>
+        <td> {{ booking.Name }}</td>
+        <td> {{ booking.Surname }}</td>
+        <td> {{ booking.Email }}</td>
+        <td> {{ booking.Phone_Number }}</td>
+        <td> {{ booking.City }}</td>
+        <td> {{ booking.Country }}</td>
+        <td> {{ booking.Address }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

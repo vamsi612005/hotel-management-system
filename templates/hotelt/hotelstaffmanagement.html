@@ -1,0 +1,68 @@
+{% include 'navbar/hotelnavbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel staff management</title>
+  <link type="text/css" rel="stylesheet" href={% static 'css/hotelstaffmanagement.css' %}>
+    <style>
+        body{
+        margin: 0;
+    padding: 0;
+    height: 100vh; /* 100% of the viewport height */
+    width: 100vw;
+            background: linear-gradient(to bottom, #f2709c, #ff9472);
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+<h3><b>HOTEL STAFF MANAGEMENT</b></h3>
+
+<a href={% url 'hoteladdstaff' %} class='btn btn-success'>Add staff</a>
+<br>
+    <br>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>EMP ID.</th>
+    <th>EMP NAME</th>
+    <th>BRANCH</th>
+    <th>WORKING AS</th>
+    <th>IN-TIME</th>
+    <th>OUT-TIME</th>
+    <th>SHIFT-NO</th>
+    <th>PAY CHECK</th>
+    <th>DELETE</th>
+    <th>UPDATE</th>
+  </tr>
+  {% for staff in staff %}
+  <tr>
+    <td>{{ staff.empid }}</td>
+    <td>{{ staff.empname }}</td>
+    <td>{{ staff.branch }}</td>
+    <td>{{ staff.workingas }}</td>
+    <td>{{ staff.intimehr }}:{{ staff.intimemin }}</td>
+    <td>{{ staff.outtimehr }}:{{ staff.outtimemin }}</td>
+    <td>{{ staff.shiftno }}</td>
+    <td>{{ staff.paycheck }}LPA</td>
+    <td>
+      <form method="POST" action="{% url 'deletestaff' %}">
+          {% csrf_token %}
+          <input type="hidden" name="obj_id" value="{{ staff.id }}">
+          <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    </td>
+    <td>
+        <form method="POST" action="{% url 'updatestaff' staff.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </td>
+  </tr>
+</div>
+  {% endfor %}
+</table>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{% include 'navbar/usernavbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user view</title>
+    <style>
+  body {
+  margin: 0;
+    padding: 0;
+    height: 100vh; /* 100% of the viewport height */
+    width: 100vw;
+background: linear-gradient(to bottom, #cfd9df, #e2ebf0);
+
+  }
+    </style>
+</head>
+<body>
+{% block body %}
+<!--<div class="container mt-5">-->
+<!--        <div class="row justify-content-center">-->
+<!--            <div class="col-md-6">-->
+<!--                <form class="form-inline" method="post" action="#">-->
+<!--                    {% csrf_token %}-->
+<!--                    <div class="input-group">-->
+<!--                        <input type="text" class="form-control" placeholder="Search" aria-label="Search" name="name" aria-describedby="basic-addon2">-->
+<!--                        <div class="input-group-append">-->
+<!--                            <button class="btn btn-outline-secondary" type="button">Search</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--<br>-->
+<!--<br>-->
+<br>
+<br>
+        <div class="container">
+                <div class="row">
+{% for hotels in hotels %}
+                    <div class="col-sm-4 mb-3">
+<div class="card" style="width: 18rem;">
+  <img src="{{ hotels.hotelimage.url }}" class="card-img-top" alt="hotel-image">
+  <div class="card-body">
+      <p class="card-text">{{hotels.id}}</p>
+    <h5 class="card-title">{{ hotels.hotelname }}</h5>
+    <p class="card-text">{{ hotels.hoteldesc }}</p>
+      <p class="card-text">Location: {{ hotels.hotellocation }}</p>
+      <p class="card-text">Average cost per night: {{ hotels.hotelavgroomcostpn }}</p>
+      <p class="card-text">Total no. of rooms: {{ hotels.noofrooms }}</p>
+    <a href={% url 'bookaroom' pk=hotels.id %} class="btn btn-primary">Book a room</a>
+  </div>
+</div>
+                    </div>
+{% endfor %}
+
+                </div>
+        </div>
+{% endblock %}
+</body>
+</html>
